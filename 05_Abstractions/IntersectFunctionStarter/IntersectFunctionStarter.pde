@@ -5,7 +5,7 @@
  * and the player starts at the centre. Each time the player 
  * intersects with the flag, the flag moves to a new random spot and 
  * the player resets to the centre.
- * (A) Complete the intersect method and call it in the appropriate spot
+ * (A) Complete the intersect function and call it in the appropriate spot
  * (B) There are other places that could use methods to help manage complexity
  *     and reduce repetition. Identify these places, create the methods, and call them!
  *
