@@ -21,16 +21,32 @@ void setup() {
 void draw() {
   background(BACKGROUND);
 
+  drawBall();
+
+  moveBall();
+
+  //if we are at the edge, the ball will "bounce" - go opposite direction
+  bounce();
+}
+
+void drawBall()
+{
   //display the "ball"
   noStroke();
   fill(FILL);
-  ellipse(x, height/2, SIZE, SIZE);
+  ellipse(x, height/2, SIZE, SIZE);  
+}
 
+void moveBall()
+{
   //move the ball
-  x = x + displacement;
+  x = x + displacement;  
+}
 
+void bounce()
+{
   // If we’ve reached an edge, reverse speed
   if ((x > width) || (x < 0)) {
     displacement = displacement * - 1;
-  }
+  }  
 }

@@ -23,13 +23,7 @@ void setup()
 {
   size(400, 400);
   
-  //set the player in the centre
-  x = width/2;
-  y = height/2;
-  
-  //set the flag in a random spot (slightly away from the edge)
-  flagX = (int)random(width/10, width*9/10);
-  flagY = (int)random(height/10, height*9/10); 
+  setPositions();  //set positions of the flag and the player
 
   noStroke();
 }
@@ -47,6 +41,41 @@ void draw()
   fill(255);
   square(x, y, PLAYER_SIZE);
   
+  movePlayer();
+  
+  //check to see if the player intersects with the flag
+  //boolean intersects = intersect(x, y, flagX, flagY);
+  //if(intersects)
+  if(intersect(x, y, flagX, flagY))
+  {
+    setPositions();
+  }
+}
+
+
+/**
+ * intersect function - returns whether or not the player has come
+ * into any contact with the flag.
+ * @return true - there is contact; false - no contact
+ */
+boolean intersect(int x1, int y1, int x2, int y2)
+{
+  return dist(x1, y1, x2, y2) <= FLAG_SIZE/2;
+}
+ 
+ 
+void setPositions()
+{
+  x = width/2;
+  y = height/2;
+  
+  //set the flag in a random spot (slightly away from the edge)
+  flagX = (int)random(width/10, width*9/10);
+  flagY = (int)random(height/10, height*9/10);   
+}
+
+void movePlayer()
+{
   //move the player using keys 
   //(not using the mousePressed method because we want smooth movement)
   if(keyPressed)
@@ -67,30 +96,5 @@ void draw()
     {
       x++;
     }
-  }
-  
-  //check to see if the player intersects with the flag
-  //boolean intersects = intersect(x, y, flagX, flagY);
-  //if(intersects)
-  if(intersect(x, y, flagX, flagY))
-  {
-    x = width/2;
-    y = height/2;
-    
-    //set the flag in a random spot (slightly away from the edge)
-    flagX = (int)random(width/10, width*9/10);
-    flagY = (int)random(height/10, height*9/10);     
-  }
+  }  
 }
-
-
-/**
- * intersect function - returns whether or not the player has come
- * into any contact with the flag.
- * @return true - there is contact; false - no contact
- */
-boolean intersect(int x1, int y1, int x2, int y2)
-{
-  return dist(x1, y1, x2, y2) <= FLAG_SIZE/2;
-}
- 
