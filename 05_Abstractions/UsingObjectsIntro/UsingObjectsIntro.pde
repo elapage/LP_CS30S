@@ -1,33 +1,24 @@
 /** 
  * The argument for why we need objects...
  * @author LP
- * @version 2018
+ * @version 2025
  */
 
-
-float c1X, c1Y, c1diam;  //Circle one stuff
-float c2X, c2Y, c2diam;  //Circle two stuff
-float r1X, r1Y, r1Width, r1Height;  //Rectangle's stuff
+//declare two circle objects and one rectangle
+Circle c1;
+Circle c2;
+Rectangle r1;
 
 void setup()
 {
   size(480, 270);
   
-  //set circle 1's info
-  c1X = 100;
-  c1Y = 100;
-  c1diam = 40;
-  
-  //set circle 2's info
-  c2X = width/2;
-  c2Y = height/2;
-  c2diam = 100;
-  
-  //set the rectangle's info
-  r1X = mouseX;
-  r1Y = mouseY;
-  r1Width = 20;
-  r1Height = 20;
+  //initialize (instantiate) the circle - we are setting its properties
+  c1 = new Circle();  //using default - (100, 100), radius of 20
+  c2 = new Circle(width/2, height/2, 50);
+   
+  r1 = new Rectangle();
+
   
   rectMode(CENTER);
   noStroke();
@@ -38,15 +29,15 @@ void draw()
   background(#172A3A);
   
   fill(#09BC8A);
-  ellipse(c1X, c1Y, c1diam, c1diam);
+  circle(c1.getX(), c1.getY(), c1.getDiameter());
  
   fill(#75DDDD);
-  ellipse(c2X, c2Y, c2diam, c2diam); 
+  circle(c2.getX(), c2.getY(), c2.getDiameter()); 
 
   //update rectangle's coordinate information
-  r1X = mouseX;
-  r1Y = mouseY;
+  r1.setX(mouseX);
+  r1.setY(mouseY);
   
   fill(#f71735);
-  rect(r1X, r1Y, r1Width, r1Height);
+  rect(r1.getX(), r1.getY(), r1.getWidth(), r1.getHeight());
 }
