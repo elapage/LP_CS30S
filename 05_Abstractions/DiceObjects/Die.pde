@@ -13,6 +13,7 @@ class Die
   public Die(float xPosition, float yPosition)
   {
     value = (int)random(1, 7);
+    //roll(); //could also use
     x = xPosition;
     y = yPosition;
   }
@@ -23,7 +24,7 @@ class Die
   
   public void roll()
   {
-    value = (int)random(1, 6);
+    value = (int)random(1, 7);
   } 
   
   public void display()
@@ -31,7 +32,8 @@ class Die
     //set the font
     rectMode(CENTER);
     textAlign(CENTER, CENTER);
-    textFont(diceFont);
+    textSize(42);
+    //textFont(diceFont);
     
     //draw the rectangle
     fill(255);
@@ -43,8 +45,9 @@ class Die
     text(value, x, y);
   }
   
-  public int compareTo(Die other)
+  //accessor for the value on the face of the die
+  public int getValue()
   {
-    return (this.value - other.value);
+    return value;
   }
 }

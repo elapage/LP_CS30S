@@ -17,6 +17,20 @@ void draw()
   background(#249389);
   d1.display();
   d2.display();
+  
+  //compare the two die to see which value is bigger
+  if(d1.getValue() > d2.getValue())
+  {
+    text(">", width/2, height/2);
+  }
+  else if(d1.getValue() < d2.getValue())
+  {
+    text("<", width/2, height/2);
+  }
+  else
+  {
+    text("=", width/2, height/2);
+  }
 }
 
 void keyPressed()
