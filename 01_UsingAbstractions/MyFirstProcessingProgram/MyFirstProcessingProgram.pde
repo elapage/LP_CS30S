@@ -1,0 +1,14 @@
+size(400, 400);
+background(25, 63, 122);
+stroke(255);
+line(10, 15, 80, 13);
+fill(#9FEAC1);
+circle(9, 10, 50);
+fill(#D89FEA);
+ellipse(15, 80, 20, 55);
+fill(255, 43, 67);
+rect(333, 156, 40, 255);
+fill(90, 90, 90);
+noStroke();
+square(30, 200, 50);
+point(200, 200);
