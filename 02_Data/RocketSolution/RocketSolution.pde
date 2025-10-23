@@ -17,7 +17,7 @@ void setup()
   
   y = height;
   //setting the mode of drawing the rectangle from the center
-  
+  //float speed;
   speed = 0;
   rectMode(CENTER);
 }

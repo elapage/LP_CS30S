@@ -13,7 +13,7 @@ void setup()
   size(500, 500);
   
   //a good place to initialize variables!
-  x = width;  //sets the circle to the far left
+  x = width/2;  //sets the circle to the far left
   
   y = height;
 }
@@ -31,7 +31,7 @@ void draw()
   //task 1 - change the circle to start at the right and move to the left
   //task 2 - create another circle that starts at the bottom and moves up
   
-  circle(width/2, y, 50);
+  circle(width/2, y, 50); //<>//
   
   y = y - 1;
 }
