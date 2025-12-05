@@ -8,6 +8,8 @@
 //keep track of the position (x, y) for the next box
 int nextX, nextY;
 
+String secretMessage;
+
 final int SIZE = 50;
 final color FILL_A = #5CA4A9;
 final color FILL_Z = #B81365;
@@ -19,6 +21,10 @@ void setup()
   //start our boxes at (0, 0)
   nextX = 0;
   nextY = 0;
+  
+  secretMessage = "";  //set to an empty String - no message
+  
+  noStroke();
 }
 
 void keyPressed()
@@ -54,6 +60,24 @@ void keyPressed()
       nextY = nextY + SIZE;
       nextX = 0;  //reset x position to 0
     }
+    
+    //join the character to my current string
+    //concatenating the character to the current string
+    secretMessage = secretMessage + key;
+  }
+  else if(keyCode == ENTER)
+  {
+    //display the secret message
+    println(secretMessage);
+    
+    //clear the screen
+    background(204);
+    //reset the box positions to the start
+    nextX = 0;
+    nextY = 0;
+    //reset my string to no message
+    secretMessage = "";
+    
   }
 }
 
