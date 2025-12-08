@@ -65,7 +65,7 @@ void keyPressed()
     //concatenating the character to the current string
     secretMessage = secretMessage + key;
   }
-  else if(keyCode == ENTER)
+  else if(key == ENTER)
   {
     //display the secret message
     println(secretMessage);
@@ -77,10 +77,32 @@ void keyPressed()
     nextY = 0;
     //reset my string to no message
     secretMessage = "";
+  }
+  else if(key == BACKSPACE)
+  {
+    //what does it mean to backspace? We aren't removing
+    //but rather "drawing over"
     
+    //so long as both x and y don't equal 0
+    if(nextX != 0 || nextY != 0)
+    {
+      //set the x back one space to draw over the previous
+      //box
+      nextX = nextX - SIZE;
+      
+      //check if past the left boundary; if so, cover
+      //up the last box
+      if(nextX < 0)
+      {
+        nextX = width - SIZE;
+        nextY = nextY - SIZE;
+      }
+      
+      //fill over this current box
+      fill(204);
+      square(nextX, nextY, SIZE);
+    }
   }
 }
 
-void draw()
-{
-}
+void draw(){}
