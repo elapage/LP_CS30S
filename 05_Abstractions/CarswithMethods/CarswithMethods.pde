@@ -23,6 +23,13 @@ void draw()
   drawCar(width/3*2, height/2, #C05858);
 }
 
+
+/**
+ * Draws a simple car
+ * @param x  the centre x value
+ * @param y  the centre y value
+ * @param bodyColour  the body colour
+ */
 void drawCar(float x, float y, color bodyColour)
 {
   //wheels
@@ -37,6 +44,9 @@ void drawCar(float x, float y, color bodyColour)
   rect(x, y, 50, 50);  
 }
 
+/**
+ * Draws the road
+ */
 void drawRoad()
 {
   fill(#59656f);
