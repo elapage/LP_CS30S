@@ -23,13 +23,7 @@ void setup()
 {
   size(400, 400);
   
-  //set the player in the centre
-  x = width/2;
-  y = height/2;
-  
-  //set the flag in a random spot (slightly away from the edge)
-  flagX = (int)random(width/10, width*9/10);
-  flagY = (int)random(height/10, height*9/10); 
+  setPositions();
 
   noStroke();
 }
@@ -38,6 +32,19 @@ void draw()
 {
   background(204);
   
+  drawPlayers();
+  
+  playerMove();
+  
+  //check to see if the player intersects with the flag
+  if(doesPlayerHitFlag())
+  {
+    setPositions();
+  }
+}
+
+void drawPlayers()
+{
   //draw the flag
   fill(0);
   circle(flagX, flagY, FLAG_SIZE);
@@ -45,8 +52,31 @@ void draw()
   //draw the "player"
   rectMode(CENTER);
   fill(255);
-  square(x, y, PLAYER_SIZE);
+  square(x, y, PLAYER_SIZE);  
+}
+
+/**
+ * intersect function - returns whether or not the player has come
+ * into any contact with the flag.
+ * @return true - there is contact; false - no contact
+ */
+boolean doesPlayerHitFlag()
+{
+  if(dist(x, y, flagX, flagY) <= FLAG_SIZE/2)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
   
+  //return dist(x, y, flagX, flagY) <= FLAG_SIZE/2;
+}
+
+
+void playerMove()
+{
   //move the player using keys 
   //(not using the mousePressed method because we want smooth movement)
   if(keyPressed)
@@ -67,24 +97,16 @@ void draw()
     {
       x++;
     }
-  }
-  
-  //check to see if the player intersects with the flag
-  if(dist(x, y, flagX, flagY) <= FLAG_SIZE/2)
-  {
-    x = width/2;
-    y = height/2;
-    
-    //set the flag in a random spot (slightly away from the edge)
-    flagX = (int)random(width/10, width*9/10);
-    flagY = (int)random(height/10, height*9/10);     
-  }
+  }  
 }
 
-/**
- * intersect function - returns whether or not the player has come
- * into any contact with the flag.
- * @return true - there is contact; false - no contact
- */
- 
+void setPositions()
+{
+  x = width/2;
+  y = height/2;
+  
+  //set the flag in a random spot (slightly away from the edge)
+  flagX = (int)random(width/10, width*9/10);
+  flagY = (int)random(height/10, height*9/10);    
+}
  
