@@ -9,14 +9,24 @@
  */
  
 //declare your instances!
+Raindrop r1;
 
 void setup()
 {
   size(270, 480);
   //instantiate your instances
+  
+  r1 = new Raindrop(100, 2);
 }
 
 void draw()
 {
+  background(0);
   //call methods to alter your raindrop!
+  r1.display();
+  r1.move();
+  
+  //check to see if the raindrop's y is greater than the height
+  //then reset if yes
+  
 }
