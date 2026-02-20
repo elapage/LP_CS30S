@@ -10,6 +10,7 @@ class Circle
   private color fillColour = 255;  //initialized with the DEFAULT value
   private color strokeColour;
   
+  
   //constructor - defines the starting properties
   //of this object
   public Circle(float startX, float startY, float startRad)
@@ -42,10 +43,22 @@ class Circle
   //MUTATOR for the radius
   public void changeRadius(float value)
   {
-    if(radius + value > 5 && radius + value < width/2)
+    if(radius + value >= 5 && radius + value <= width/2)
     {
       radius += value;
     }
+  }
+  
+  //ACCESSOR for the radius
+  public float getRadius()
+  {
+    return radius;
+  }
+  
+  //Also an ACCESSOR for the radius
+  public boolean isAtLimit()
+  {
+    return (radius <= 5 || radius >= width/2);
   }
   
 }
