@@ -6,7 +6,6 @@
  */
 
 Ball ball;
-int score1, score2;
 
 void setup()
 {
@@ -40,8 +39,6 @@ void draw()
 
   //check the horizontal edges for a score
   checkEdges();  
-  
-  surface.setTitle("P1: " + score1 + " P2: " + score2);
 }
 
 /**
@@ -52,12 +49,10 @@ void checkEdges()
 {
   if(ball.checkAtEdge(0, width) == 1)
   {
-    score1++;
     ball.reset(random(width/9, width*8/9), random(height/4, height*3/4));
   }
   if(ball.checkAtEdge(0, width) == -1)
   {
-    score2++;
     ball.reset(random(width/9, width*8/9), random(height/4, height*3/4));
   }  
 }
