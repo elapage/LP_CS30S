@@ -5,7 +5,10 @@
  * @version TODAY'S DATE
  */
 
+//create new instances of our objects by declarinig
+//variables for those objects
 Ball ball;
+Paddle left, right;
 
 void setup()
 {
@@ -13,18 +16,18 @@ void setup()
   
   //instantiate a new ball that starts somewhere
   //near the middle of the screen
-  
+  ball = new Ball(200, 100);
   
   //make the paddles different colours to make
   //the boundary checks easier (sometimes
   //the boundary check for the left will
   //help the right paddle out and vice versa, even
   //after it should have gone through
+  left = new Paddle(width/10, 100, #DB2763);
+  right = new Paddle(width * 9/10, 100, #00FFC5);
   
   
-  //scores start at 0
-  score1 = 0;
-  score2 = 0;
+
 }
 
 void draw()
@@ -32,13 +35,42 @@ void draw()
   background(0);
   
   //display elements
-  
+  ball.display();
+  left.display();
+  right.display();
   
   //move ball and check vertical boundary
-  
+  ball.move();
+  ball.checkAtBoundary(0, height);
 
   //check the horizontal edges for a score
   checkEdges();  
+  
+  //move paddles
+  paddleMovement();
+}
+
+void paddleMovement()
+{
+  if(keyPressed)
+  {
+    if(key == 'w')
+    {
+      left.moveUp();
+    }
+    if(key == 's')
+    {
+      left.moveDown();
+    }    
+    if(keyCode == UP)
+    {
+      right.moveUp();
+    }    
+    if(keyCode == DOWN)
+    {
+      right.moveDown();
+    }     
+  }
 }
 
 /**
