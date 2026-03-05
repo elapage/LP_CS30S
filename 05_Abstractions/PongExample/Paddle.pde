@@ -31,12 +31,28 @@ class Paddle  //class header
   //movement methods - MUTATORS
   public void moveUp()
   {
-    y -= SPEED;
+    float top = y - LENGTH/2;
+    if(top - SPEED > 0)
+    {
+      y -= SPEED;
+    }
+    else
+    {
+      y = LENGTH/2;
+    }
   }
   
   public void moveDown()
   {
-    y += SPEED;
+    float bottom = y + LENGTH/2;
+    if(bottom + SPEED < height)
+    {
+      y += SPEED;
+    }
+    else
+    {
+      y = height - LENGTH/2;
+    }
   }
   
   //accessor for the fill

@@ -10,6 +10,8 @@
 Ball ball;
 Paddle left, right;
 
+int leftScore, rightScore;
+
 void setup()
 {
   size(500, 500);
@@ -26,7 +28,8 @@ void setup()
   left = new Paddle(width/10, 100, #DB2763);
   right = new Paddle(width * 9/10, 100, #00FFC5);
   
-  
+  leftScore = 0;
+  rightScore = 0;
 
 }
 
@@ -48,8 +51,30 @@ void draw()
   
   //move paddles
   paddleMovement();
+  
+  //check whether we should bounce
+  playerIntersect();
+  
+  //display score
+  surface.setTitle("Left: " + leftScore + " Right: " + rightScore);
 }
 
+/**
+ * Checks whether either paddles touch the ball
+ */
+void playerIntersect()
+{
+  if(ball.intersect(left.getFill(), -1) || ball.intersect(right.getFill(), 1))
+  {
+    ball.bounce();
+  }
+}
+
+/**
+ * Checks to see if a key has been pressed and, if
+ * so, if it is one of the keys that controls the
+ * paddle
+ */
 void paddleMovement()
 {
   if(keyPressed)
@@ -79,12 +104,14 @@ void paddleMovement()
 
 void checkEdges()
 {
-  if(ball.checkAtEdge(0, width) == 1)
+  if(ball.checkAtEdge(0, width) == 1)  //right hand side
   {
     ball.reset(random(width/9, width*8/9), random(height/4, height*3/4));
+    leftScore++;  //leftScore = leftScore + 1 OR leftScore += 1
   }
   if(ball.checkAtEdge(0, width) == -1)
   {
     ball.reset(random(width/9, width*8/9), random(height/4, height*3/4));
+    rightScore++;
   }  
 }
