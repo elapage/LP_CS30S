@@ -33,22 +33,42 @@ void keyPressed()
   }
   else if(key == 'f' || key == 'F')  //delete a roll if the 'd' key is pressed
   {
+    //delete from the front of the list
     removeFromList(0);
   }
   else if(key == 'l' || key == 'L')
   {
+    //delete from the end of the list (variable
+    //so we need an expression, not a literal)
     removeFromList(rolls.size() - 1);
   }
   else if(key == 'd' || key == 'D')
   {
     //remove a random element from the list
+    
+    //get a random index
+    int randomIndex = (int)(random(0, rolls.size()));
+    println("Removing " + randomIndex);
+    removeFromList(randomIndex);
   }
   
-  println(rolls);
+  //println(rolls);
+  //use a for-loop because the indices of the list have
+  //a very nicely structured pattern
+  //                 index < rolls.size()
+  for(int index = 0; index <= rolls.size() - 1; index++)
+  {
+    print(rolls.get(index) + " ");
+  }
+  println("");
 }
 
+//general remove method for any of the operations
+//in the keyPressed method
 void removeFromList(int index)
 {
+  //always check to make sure we can remove (so
+  //long as there is at least one element)
   if(rolls.size() > 0)
   {
     rolls.remove(index);  //removes first element
