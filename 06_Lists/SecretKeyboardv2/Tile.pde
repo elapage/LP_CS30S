@@ -58,4 +58,9 @@ class Tile
     return SIZE;
   }
   
+  public char getCharacter()
+  {
+    return character;
+  }
+  
 }

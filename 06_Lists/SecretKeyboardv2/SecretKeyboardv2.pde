@@ -59,6 +59,17 @@ void keyPressed()
   else if(key == ENTER)
   {
     //give message in console and clear list
+    //go through list and print each character
+    for(int i = 0; i < tiles.size(); i++)
+    {
+      Tile currentTile = tiles.get(i);
+      print(currentTile.getCharacter());
+    }
+    
+    println("");  //an empty string so that the next message is on a new line
+    
+    //clear all contents from the list
+    tiles.clear();
   }
   else if(key == BACKSPACE)
   {
